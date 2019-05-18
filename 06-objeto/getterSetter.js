@@ -1,14 +1,16 @@
 const sequencia = {
-    // convenção atributo privado
+    /* por convenção atributo privado */
     _valor: 1,
 
     get valor() {
-        return this._valor
+        return this._valor++
     },
 
     set valor(valor) {
-        this._valor = valor
+        if (valor > this._valor) {
+        	this._valor = valor
+        }
     }
 }
 
-console.log(sequencia.valor(5))
+console.log(sequencia.valor(4))

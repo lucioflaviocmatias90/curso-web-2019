@@ -5,7 +5,9 @@ const pessoa = {
 }
 
 console.log(Object.keys(pessoa))
+console.log("=================================")
 console.log(Object.values(pessoa))
+console.log("=================================")
 
 // Retornando chave e valor como array
 console.log(Object.entries(pessoa))
