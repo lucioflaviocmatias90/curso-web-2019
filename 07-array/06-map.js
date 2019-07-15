@@ -11,3 +11,11 @@ console.log(resultado, nums)
 
 const soma10 = num => num + 10
 console.log(soma10(3))
+
+const triplo = e => e * 3
+console.log(triplo(2))
+
+const paraDinheiro = e => `R$ ${parseFloat(e).toFixed(2).replace('.', ',')}`
+
+const resultado2 = nums.map(soma10).map(triplo).map(paraDinheiro)
+console.log('resultado2', resultado2)
