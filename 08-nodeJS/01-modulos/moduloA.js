@@ -5,8 +5,8 @@ console.log(this)
 // Em NodeJS, um arquivo representa um módulo, e tudo o
 // que for escrito nele, vai fica apenas visivel nele.
 // Então para ele ficar vísivel para fora é preciso
-// exportá-lo, e existem várias formas de exportar no 
-// NodeJS e importar.
+// exportá-lo, e existem várias formas de exportar e 
+//  importar no NodeJS.
 
 
 // "this" é um objeto 
