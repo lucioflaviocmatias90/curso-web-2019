@@ -1,0 +1,69 @@
+// ver todos os bancos salvos no Mongo
+show dbs
+
+// selecionando o banco para trabalhar sobre ele
+use <nomeDoBanco>
+
+// criar uma collection (tabela) no banco de dados
+db.createCollection('estados')
+
+// mostrar as collections (tabelas) daquele banco
+show collections
+
+// excluindo uma collection específica
+db.estados.drop()
+
+// inserindo dados na collection
+db.estados.insert({
+    nome: "Alagoas",
+    sigla: "AL",
+    regiao: "Nordeste",
+    populacao: 322220000
+})
+
+// listando dados armazenados da collection
+db.estados.find({}).pretty()
+
+// desafio de inserir o estado de São Paulo
+db.estados.insert({
+    nome: "Sao Paulo",
+    sigla: "SP",
+    regiao: "Sudeste",
+    cidades: [{
+        _id: ObjectId(),
+        nome: "Campinas",
+        area: 795.7,
+        prefeito: "Jonas Donizete",
+        populacao: 108009324
+    },{
+        _id: ObjectId(),
+        nome: "Guarulhos",
+        populacao: 13544332
+    },{
+        _id: ObjectId(),
+        nome: "Sorocaba",
+        distanciaCapital: 87,
+        populacao: 6444209
+    }]
+}))
+
+// buscando pela sigla "RJ"
+db.estados.find({sigla: "RJ"}).pretty()
+
+// utilizando o operador OR
+db.estados.find({$or: [{sigla: "RJ"}, {sigla: "AC"}]}).pretty()
+
+// utilizando o operador AND
+db.estados.find({$and: [{sigla: "RJ"}, {sigla: "AC"}]}).pretty()
+
+// verificando collection que possui campo populacao
+db.estados.find({populacao: {$exists: true}}).pretty()
+
+// pulando um registro e retornando apenas 2
+db.estados.find().skip(1).limit(2).pretty()
+
+// totalizando registro
+db.estados.count()
+
+// fazendo um busca mais refinada
+db.estados.find({sigla: "SP"}, {"cidades.nome": 1, _id: 0}).pretty()
