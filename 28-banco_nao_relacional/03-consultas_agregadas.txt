@@ -1,0 +1,16 @@
+db.estados.aggregate([
+    { $match: { "cidades.nome": "Sorocaba" }}
+])
+
+// com o $unwind vai desenrolar ou quebrar a coleção e repeti-la
+db.estados.aggregate([
+    { $match: { "cidades.nome": "Sorocaba" }},
+    { $unwind: "$cidades" }
+])
+
+// trazendo apenas a cidade de Sorocaba
+db.estados.aggregate([
+    { $match: { "cidades.nome": "Sorocaba" }},
+    { $unwind: "$cidades" },
+    { $match: { "cidades.nome": "Sorocaba" }}
+])

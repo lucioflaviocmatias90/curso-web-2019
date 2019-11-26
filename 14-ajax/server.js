@@ -31,6 +31,7 @@ const storage = multer.diskStorage({
     }
 })
 
+// Criando função para fazer uploads de arquivo via Ajax
 const upload = multer({ storage }).single('arquivo')
 
 app.post('/upload', (req, res) => {
@@ -40,6 +41,13 @@ app.post('/upload', (req, res) => {
         }
 
         res.end('Concluído com sucesso')
+    })
+})
+
+app.post('/formulario', (req, res) => {
+    res.send({
+        ...req.body,
+        id: 1
     })
 })
 

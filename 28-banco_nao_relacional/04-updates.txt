@@ -1,0 +1,10 @@
+db.estados.update({sigla: "SP"}, { $set: { populacao: 45533327700}})
+
+// Como não existe um coleção de cidades em Alagoas, irá criar uma nova cidade
+db.estados.update({sigla: "AL"}, { $set: {cidades: [{nome: "Sergipe"}]}})
+
+// Aqui irá inserir uma nova cidade no UPDATE
+db.estados.update(
+    { sigla: "SP" },
+    { $push: { cidades: { nome: "Santos", populacao: 4335433 }}}
+)
