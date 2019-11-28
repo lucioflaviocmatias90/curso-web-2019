@@ -42,14 +42,21 @@
             }
 
             const resultado = document.getElementById('resultado')
-            fetch(form.action, options)
-                .then(resp => resp.json())
-                .then(json => {
-                    resultado.innerHTML = JSON.stringify(json)
-                })
-                .catch(err => {
-                    resultado.innerHTML = err
-                })
+            // fetch(form.action, options)
+            //     .then(resp => resp.json())
+            //     .then(json => {
+            //         resultado.innerHTML = JSON.stringify(json)
+            //     })
+            //     .catch(err => {
+            //         resultado.innerHTML = err
+            //     })
+            try {
+                const resp = await fetch(form.action, options)
+                const json = await resp.json()
+                resultado.innerHTML = JSON.stringify(json)
+            } catch (err) {
+                resultado.innerHTML = err
+            }
         }
     </script>
 </body>
